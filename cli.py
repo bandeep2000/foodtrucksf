@@ -6,6 +6,7 @@ Python cli to get food trucks in San Francisco and map its location
 python cli.py trucks tacos
 python getmap <location id> found from the previous step
 Example:
+python3 cli.py getmap  1656405
 
 
 """
@@ -29,6 +30,23 @@ def get_df_csv(csv_file):
     
     return df
 
+def get_map_desc_from_locid(df,locid):
+    """ Returns latitude and langitude given location id passed in the df
+    """
+
+    # get row from loc id
+    result = df.loc[df['locationid'] == int(locid)]
+   
+    if result.empty:
+        raise Exception(f"location id {locid} not found")
+
+    latitude = float(result.Latitude)
+    longitude = float(result.Longitude)
+    # create a description to be used by html map
+    locdescription = result.Applicant + "-" + result.FacilityType
+
+    return (latitude,longitude,locdescription)
+
 @click.group()
 def cli():
     """A simple CLI to find food trucks."""
@@ -37,19 +55,14 @@ def cli():
 @cli.command()
 @click.argument('locid')
 def getmap(locid):
-    """Returns location map given location id passed"""
+    """Returns - opens in a browser-  location map given location id passed"""
 
     # open the csv file with data
     df = get_df_csv(csv_file)
-     
-    # get row from loc id
-    result = df.loc[df['locationid'] == int(locid)]
-
-    latitude = float(result.Latitude)
-    longitude = float(result.Longitude)
-    # create a description to be used by html map
-    locdescription = result.Applicant + "-" + result.FacilityType
-
+    
+    # get langitude, longitude and locdescription
+    latitude,longitude,locdescription = get_map_desc_from_locid(df,locid)
+    
     # Create a map centered around the location
     m = folium.Map(location=[latitude,longitude], zoom_start=15)
 
@@ -73,7 +86,7 @@ def trucks(food_item):
 
     # Filter trucks based on the specified food item
     matching_trucks = df[df['FoodItems'].str.contains(food_item, case=False, na=False)]
-    # filter columns 
+    # filter rows with trucks only 
     matching_trucks = matching_trucks[matching_trucks['FacilityType'].str.contains('truck', case=False, na=False)]
     # Remove columns status where is still 'requested' - expired and approved might be good
     matching_trucks = matching_trucks[~matching_trucks['Status'].str.contains('requested', case=False, na=False)  ]
