@@ -70,7 +70,7 @@ def getmap(locid):
     folium.Marker([latitude,longitude],
                 popup= locdescription.values[0]).add_to(m)
 
-    # Save the map to an HTML file
+    # Save the map to temp HTML file
     html_file = "map.html"
     m.save(html_file)
     os.system(f"open {html_file} ")

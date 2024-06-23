@@ -5,7 +5,7 @@ A simple CLI application to find food trucks based on the food items they offer 
 ## Features
 
 - Search for food trucks selling a specified food item.
-- Display detailed information about the food trucks, including their location, address, and food items they offer.
+- Display detailed information about the food truck on the map
 
 ## Requirements
 
@@ -14,15 +14,11 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-  
-
-## Installation
+  ## Installation
 
 1. **Clone the repository**:
 
-    ```sh
-    git clone https://github.com/your-username/food-truck-finder-cli.git
-    cd food-truck-finder-cli
+    ```
     git clone git@github.com:bandeep2000/foodtrucksf.git
     cd foodtrucksf
     ```
@@ -52,8 +48,10 @@ pip install -r requirements.txt
 
 To start the CLI, use the following command:
 
+**python cli.py trucks [FOOD_ITEM]**
+
 ```sh
-python cli.py trucks [FOOD_ITEM]
+
 Example:
 
 python3 cli.py trucks tacos
@@ -73,13 +71,11 @@ Food Items: Tacos: burritos: quesadillas: combination plates: tortas: tostadas
 
 ```
 ### Running the CLI to find on the map
+**python3 cli.py getmap <location id>**
+
+Note: you can get location id from the above previous command
 
 ```
-
-python3 cli.py getmap <location id>
-
-*Note*: you can get location id from the above previous command
-
 Example:
 python3 cli.py getmap 848080
 
