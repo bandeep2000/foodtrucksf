@@ -69,7 +69,7 @@ Food Items: Tacos: burritos: quesadillas: combination plates: tortas: tostadas
 ### Running the CLI to find the truck location on the map from location id
 **python cli.py getmap [Location ID]**
 
-Note: you can get location id from the previous command output for the interested truck
+Note: you can get location id from the previous command for the interested truck
 
 ```
 Example:
