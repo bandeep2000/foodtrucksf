@@ -5,16 +5,11 @@ A simple CLI application to find food trucks based on the food items they offer 
 ## Features
 
 - Search for food trucks selling a specified food item.
-- Display detailed information about the food truck on the map
+- Display the information about the food truck on the map
 
-## Requirements
 
-Install dependencies:
-```
-pip install -r requirements.txt
-```
 
-  ## Installation
+## Installation
 
 1. **Clone the repository**:
 
@@ -26,7 +21,7 @@ pip install -r requirements.txt
 2. **Install the dependencies**:
 
     ```sh
-    pip install pandas click
+    pip install -r requirements.txt
     ```
 
 3. **Ensure you have the CSV file**:
@@ -70,16 +65,17 @@ Food Items: Tacos: burritos: quesadillas: combination plates: tortas: tostadas
 ----
 
 ```
-### Running the CLI to find on the map
-**python3 cli.py getmap <location id>**
+### Running the CLI to find the truck location on the map from location id
+**python3 cli.py getmap [Location ID]**
 
-Note: you can get location id from the above previous command
+Note: you can get location id from the previous command output for the interested truck
 
 ```
 Example:
+
 python3 cli.py getmap 848080
 
-This will automatically open browser with location - file map.html
+This will automatically open browser with location details - map.html
 
 ```
 

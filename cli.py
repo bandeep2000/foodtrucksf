@@ -19,16 +19,22 @@ import folium
 #CSV file as input
 csv_file = 'Mobile_Food_Facility_Permit.csv'
 
+
+
 def get_df_csv(csv_file):
     """returns dataframe from passed csv file path"""
 
+    
     # Read data from CSV file
+    
     try: 
         df = pd.read_csv(csv_file)
-    except IOError:
-        raise "Not able to open file"
+    except:
+        #raise "Not able to open file"
+        raise FileNotFoundError(f"{csv_file} was not found")
     
     return df
+   
 
 def get_map_desc_from_locid(df,locid):
     """ Returns latitude and langitude given location id passed in the df
@@ -108,4 +114,5 @@ def trucks(food_item):
 
 if __name__ == '__main__':
     cli()
+
 
