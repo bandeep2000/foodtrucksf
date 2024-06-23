@@ -13,6 +13,7 @@ python3 cli.py getmap  1656405
 import sys
 import os
 import pandas as pd
+from pandas.errors import EmptyDataError
 import click
 import folium
 
@@ -44,7 +45,7 @@ def get_map_desc_from_locid(df,locid):
     result = df.loc[df['locationid'] == int(locid)]
    
     if result.empty:
-        raise Exception(f"location id {locid} not found")
+        raise EmptyDataError(f"location id {locid} not found")
 
     latitude = float(result.Latitude)
     longitude = float(result.Longitude)

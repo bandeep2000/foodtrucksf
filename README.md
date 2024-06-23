@@ -23,6 +23,7 @@ A simple CLI application to find food trucks based on the food items they offer 
     ```sh
     pip install -r requirements.txt
     ```
+    *Note:* This assumes you have python 3.8 installed
 
 3. **Ensure you have the CSV file**:
 
@@ -66,7 +67,7 @@ Food Items: Tacos: burritos: quesadillas: combination plates: tortas: tostadas
 
 ```
 ### Running the CLI to find the truck location on the map from location id
-**python3 cli.py getmap [Location ID]**
+**python cli.py getmap [Location ID]**
 
 Note: you can get location id from the previous command output for the interested truck
 
